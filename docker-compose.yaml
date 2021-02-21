@@ -2,17 +2,18 @@
 version: "2"
 volumes:
   bookstack-config: {}
+  bookstackdb-config: {}
   haproxy-certs: {}
 services:
   haproxy-lb:
     image: "haproxy:2.3"
     volumes:
       - haproxy-certs:/certs
-      - /home/docker-admin/code/automation/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./haproxy.cfg:/config/haproxy.cfg:ro
     ports:
       - 80:80
       - 443:443
-    command: ["haproxy","-c", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
+    command: ["haproxy","-c", "-f", "haproxy.cfg"]
   bookstack:
     image: ghcr.io/linuxserver/bookstack
     container_name: bookstack
@@ -43,5 +44,5 @@ services:
       - MYSQL_USER=bookstack
       - MYSQL_PASSWORD=Allah123
     volumes:
-      - /bookstackdb-config:/config
+      - bookstackdb-config:/config
     restart: unless-stopped
