@@ -12,8 +12,7 @@ services:
     ports:
       - 80:80
       - 443:443
-    command:
-      haproxy -c -f /usr/local/etc/haproxy/haproxy.cfg
+    command: ["haproxy","-c", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
   bookstack:
     image: ghcr.io/linuxserver/bookstack
     container_name: bookstack
