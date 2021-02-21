@@ -5,7 +5,7 @@ volumes:
   haproxy-certs: {}
 services:
   haproxy-lb:
-    image: "haproxy:2.4"
+    image: "haproxy:2.3"
     volumes:
       - haproxy-certs:/certs
       - /home/docker-admin/code/automation/haproxy.cfg:/etc/haproxy/haproxy.cfg
