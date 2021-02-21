@@ -1,0 +1,35 @@
+---
+version: "2"
+services:
+  bookstack:
+    image: ghcr.io/linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=https://books.szyjka.net
+      - DB_HOST=bookstack_db
+      - DB_USER=bookstack
+      - DB_PASS=Allah123$
+      - DB_DATABASE=bookstackapp
+    ports:
+      - 7820:80
+    volume:
+      - bookstack-config:/config
+    restart: unless-stopped
+    depends_on:
+      - bookstack_db
+  bookstack_db:
+    image: ghcr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=Allah23$
+      - TZ=USA/NewYork
+      - MYSQL_DATABASE=bookstackapp
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=Allah123$
+    volumes:
+      - 
+    restart: unless-stopped
