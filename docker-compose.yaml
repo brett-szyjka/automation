@@ -10,7 +10,7 @@ services:
       - APP_URL=https://books.szyjka.net
       - DB_HOST=bookstack_db
       - DB_USER=bookstack
-      - DB_PASS=Allah123$
+      - DB_PASS=Allah123
       - DB_DATABASE=bookstackapp
     ports:
       - 7820:80
@@ -25,11 +25,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - MYSQL_ROOT_PASSWORD=Allah23$
+      - MYSQL_ROOT_PASSWORD=Allah123
       - TZ=USA/NewYork
       - MYSQL_DATABASE=bookstackapp
       - MYSQL_USER=bookstack
-      - MYSQL_PASSWORD=Allah123$
+      - MYSQL_PASSWORD=Allah123
     volumes:
-      - 
+      - /bookstackdb-config:/config
     restart: unless-stopped
