@@ -2,8 +2,16 @@
 version: "2"
 volumes:
   bookstack-config: {}
-
+  haproxy-certs: {}
 services:
+  haproxy-lb:
+    image: "haproxy:2.4"
+    volumes:
+      - haproxy-certs:/certs
+      - /home/docker-admin/code/automation/haproxy.cfg:/etc/haproxy/haproxy.cfg
+    ports:
+      - 80:80
+      - 443:443
   bookstack:
     image: ghcr.io/linuxserver/bookstack
     container_name: bookstack
