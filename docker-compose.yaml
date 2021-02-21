@@ -1,5 +1,8 @@
 ---
 version: "2"
+volumes:
+  bookstack-config: {}
+
 services:
   bookstack:
     image: ghcr.io/linuxserver/bookstack
